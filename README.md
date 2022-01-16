@@ -48,6 +48,7 @@ export ACCESS_KEY="SCW4KFF46W"
 export SECRET_KEY="1ff11952-fed1-4a94-95e7-83fdb9a66367"
 export S3BUCKET_NAME="otbm-qrcode"
 export S3BUCKET_REGION="fr-par"
+export URL="https://api.qrcode.otbm.fr"
 ```
 
 ### Run
@@ -84,7 +85,7 @@ It's the size of the generated image 1 is the smallest and 40 is the largest.
 *result_format*
 Is the format is the format in which the image will be made available.
 - If set to base64, you will get the image encoded in base64
-- If set to s3, you will get an URL to the generated image.
+- If set to link, you will get an URL to the generated image.
 
 
 
@@ -111,7 +112,7 @@ result:
 }
 ```
 
-s3
+Link
 ```bash
 curl --request POST \
   --url http://[server]:[port]/v1/elements \
@@ -119,7 +120,7 @@ curl --request POST \
   --data '{
 "text":"hello World",
 "size":"10",
-"result_format":"s3"
+"result_format":"link"
 }'
 ```
 result:
