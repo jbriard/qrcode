@@ -1,5 +1,5 @@
 # QRCode Generator
-![alt text](https://framagit.org/uploads/-/system/group/avatar/43224/vspg-logo.png "Logo QRCode Generator")
+![alt text](https://github.com/jbriard/qrcode/blob/main/code/static/qrcode.png?raw=true "Logo QRCode Generator")
 
 QRCode Generator is a REST API designed to generate QRCode.
 
