@@ -62,6 +62,7 @@ def index() :
 @route("/validation", method="GET")
 @view("validation.tpl")
 def index() :
+
     ACCESS_KEY = os.environ.get('ACCESS_KEY') # None
     SECRET_KEY = os.environ.get('SECRET_KEY') # None
     S3BUCKET_NAME = os.environ.get('S3BUCKET_NAME') # None
@@ -152,7 +153,7 @@ def generatQrcode(postdata):
                 byte_content = open_file.read()
                 base64_bytes = b64encode(byte_content)
                 result = base64_bytes.decode(ENCODING)
-        elif result_format == "s3":
+        elif result_format == "link":
             result = uploads3(ACCESS_KEY=ACCESS_KEY, SECRET_KEY=SECRET_KEY, S3BUCKET_NAME=S3BUCKET_NAME, S3BUCKET_URL=S3BUCKET_URL, S3BUCKET_REGION=S3BUCKET_REGION, IMAGE_NAME=IMAGE_NAME, IMAGE_PATH=IMAGE_PATH)
 
 

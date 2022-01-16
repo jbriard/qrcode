@@ -39,7 +39,7 @@ footer {
     </head>
 <body>
     
-<center><a href="https://justin.briard.email" alt="link to QRCODE web site"><img src="/static/qrcode.png" alt="Logo QRCode"</i></a></center>
+<center><a href="https://qrcode.otbm.fr" alt="link to QRCODE web site"><img src="/static/qrcode.png" alt="Logo QRCode"</i></a></center>
 <br />
 
 
@@ -48,7 +48,7 @@ footer {
 Get the QRCode in Base64
 <b>Call:</b>
 <pre>curl --request POST \
-  --url http://127.0.0.1:8080/v1/qrcode \
+  --url {{!URL}}v1/qrcode \
   --header 'content-type: application/json' \
   --data '{
 "text":"hello World",
@@ -73,12 +73,12 @@ Get the QRCode in Base64
 Get the QRCode image link
 <b>Call:</b>
 <pre>curl --request POST \
-  --url http://127.0.0.1:8080/v1/qrcode \
+  --url {{!URL}}v1/qrcode \
   --header 'content-type: application/json' \
   --data '{
 "text":"hello World",
 "size":"2",
-"result_format":"s3"
+"result_format":"link"
 }'
 </pre>
 
