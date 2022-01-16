@@ -1,0 +1,7 @@
+bottle
+paste
+requests
+urllib3
+boto3
+pyqrcode
+pypng
