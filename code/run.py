@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-from bottle import route, run, request, response, HTTPError, error, install, view, static_file
+from bottle import route, run, request, response, HTTPError, error, install, view, static_file, redirect
 import string
 import urllib3, logging
 import random
@@ -121,8 +121,12 @@ def error404(error):
     return {"status": "error", "error": "not found"}
 
 
+@route('/download/<filename:path>')
+def download(filename):
+    return static_file(filename, root='tmp', download=True)
 
 ##Code
+
 
 
 def generatQrcode(postdata):
@@ -156,12 +160,21 @@ def generatQrcode(postdata):
         elif result_format == "link":
             result = uploads3(ACCESS_KEY=ACCESS_KEY, SECRET_KEY=SECRET_KEY, S3BUCKET_NAME=S3BUCKET_NAME, S3BUCKET_URL=S3BUCKET_URL, S3BUCKET_REGION=S3BUCKET_REGION, IMAGE_NAME=IMAGE_NAME, IMAGE_PATH=IMAGE_PATH)
 
+        elif result_format == "download":
+            IMAGE_DL_PATH = URL + "download/" + IMAGE_NAME
+            print (IMAGE_DL_PATH)
+            #return redirect(IMAGE_DL_PATH) 
+            result = "plop"
+
+        else:
+            result="wrong parameter for result_format: " + result_format + " is not a supported value."
 
         ret = result
 
     except Exception as e:
         raise Exception("Something Bad append generatQrcode - %s" % e)
     return ret
+
 
 def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
     return ''.join(random.choice(chars) for _ in range(size))
